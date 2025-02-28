@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chicken</title>
+        <link rel="icon" type="image/x-icon" href="https://menu.earlyriserscoffeeshop.com/favicon.ico">
+        <style>
+            body {
+                background-color: white;
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+            iframe {
+                position: absolute;
+                width: 100%;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                border: none;
+            }
+            .notification-container {
+                position: fixed;
+                top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 1000;
+                pointer-events: none;
+            }
+            .notification {
+                background-color: #4CAF50;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+                margin-bottom: 10px;
+                opacity: 0;
+                transform: translateY(-30px);
+                animation: slideIn 0.5s ease-out forwards;
+                pointer-events: auto;
+            }
+            @keyframes slideIn {
+                0% { opacity: 0; transform: translateY(-30px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fadeOut {
+                0% { opacity: 1; transform: translateY(0); }
+                100% { opacity: 0; transform: translateY(-20px); }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="notification-container" class="notification-container"></div>
+        <iframe id="fullscreen-iframe" src=""></iframe>
+        <script>
+            const ACTIVE_LINK = "https://menu.earlyriserscoffeeshop.com/";
+            const TYPE_LINK_MESSAGE = "This link is an Interstellar Link.";
+
+            window.onload = function() {
+                var contentFrame = document.getElementById("fullscreen-iframe");
+                contentFrame.src = ACTIVE_LINK;
+
+                function showNotification(message, type, duration = 3000) {
+                    const container = document.getElementById("notification-container");
+                    let typeIcon = "ℹ️ ", typeColor = "#5a98e9";
+
+                    if (type === "success") {
+                        typeIcon = "✅ ";
+                        typeColor = "#4CAF50";
+                    } else if (type === "error") {
+                        typeIcon = "❌ ";
+                        typeColor = "#e45151";
+                    }
+
+                    const notification = document.createElement("div");
+                    notification.className = "notification";
+                    notification.textContent = typeIcon + message;
+                    notification.style.backgroundColor = typeColor;
+                    container.appendChild(notification);
+
+                    setTimeout(() => {
+                        notification.style.animation = "fadeOut 0.5s ease-out forwards";
+                        notification.addEventListener("animationend", () => notification.remove());
+                    }, duration);
+                }
+                
+                setTimeout(() => showNotification(TYPE_LINK_MESSAGE, "info"), 0);
+                
+                setTimeout(() => {
+                    if (contentFrame.src.includes(ACTIVE_LINK)) {
+                        showNotification("Successfully loaded link!", "success");
+                    } else {
+                        showNotification("Link may be blocked or expired.", "error");
+                    }
+                }, 1000);
+            };
+        </script>
+    </body>
+</html>
