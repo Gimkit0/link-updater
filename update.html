@@ -1,3 +1,47 @@
+<script>
+    const ACTIVE_LINK = "https://menu.earlyriserscoffeeshop.com/";
+    const TYPE_LINK_MESSAGE = "This link is an Interstellar Link.";
+
+    window.onload = function() {
+        var contentFrame = document.getElementById("fullscreen-iframe");
+        contentFrame.src = ACTIVE_LINK;
+
+        function showNotification(message, type, duration = 3000) {
+            const container = document.getElementById("notification-container");
+            let typeIcon = "ℹ️ ", typeColor = "#5a98e9";
+
+            if (type === "success") {
+                typeIcon = "✅ ";
+                typeColor = "#4CAF50";
+            } else if (type === "error") {
+                typeIcon = "❌ ";
+                typeColor = "#e45151";
+            }
+
+            const notification = document.createElement("div");
+            notification.className = "notification";
+            notification.textContent = typeIcon + message;
+            notification.style.backgroundColor = typeColor;
+            container.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = "fadeOut 0.5s ease-out forwards";
+                notification.addEventListener("animationend", () => notification.remove());
+            }, duration);
+        }
+        
+        setTimeout(() => showNotification(TYPE_LINK_MESSAGE, "info"), 0);
+        
+        setTimeout(() => {
+            if (contentFrame.src.includes(ACTIVE_LINK)) {
+                showNotification("Successfully loaded link!", "success");
+            } else {
+                showNotification("Link may be blocked or expired.", "error");
+            }
+        }, 1000);
+    };
+</script>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,48 +97,5 @@
     <body>
         <div id="notification-container" class="notification-container"></div>
         <iframe id="fullscreen-iframe" src=""></iframe>
-        <script>
-            const ACTIVE_LINK = "https://menu.earlyriserscoffeeshop.com/";
-            const TYPE_LINK_MESSAGE = "This link is an Interstellar Link.";
-
-            window.onload = function() {
-                var contentFrame = document.getElementById("fullscreen-iframe");
-                contentFrame.src = ACTIVE_LINK;
-
-                function showNotification(message, type, duration = 3000) {
-                    const container = document.getElementById("notification-container");
-                    let typeIcon = "ℹ️ ", typeColor = "#5a98e9";
-
-                    if (type === "success") {
-                        typeIcon = "✅ ";
-                        typeColor = "#4CAF50";
-                    } else if (type === "error") {
-                        typeIcon = "❌ ";
-                        typeColor = "#e45151";
-                    }
-
-                    const notification = document.createElement("div");
-                    notification.className = "notification";
-                    notification.textContent = typeIcon + message;
-                    notification.style.backgroundColor = typeColor;
-                    container.appendChild(notification);
-
-                    setTimeout(() => {
-                        notification.style.animation = "fadeOut 0.5s ease-out forwards";
-                        notification.addEventListener("animationend", () => notification.remove());
-                    }, duration);
-                }
-                
-                setTimeout(() => showNotification(TYPE_LINK_MESSAGE, "info"), 0);
-                
-                setTimeout(() => {
-                    if (contentFrame.src.includes(ACTIVE_LINK)) {
-                        showNotification("Successfully loaded link!", "success");
-                    } else {
-                        showNotification("Link may be blocked or expired.", "error");
-                    }
-                }, 1000);
-            };
-        </script>
     </body>
 </html>
