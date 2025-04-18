@@ -1,105 +1,73 @@
-<!--DONT MODIFY THIS SCRIPT IF YOU DONT KNOW WHAT YOU'RE DOING!-->
-<!--SIGMAS ONLY-->
-
 <script>
     const ACTIVE_LINK = "https://timkekasihhdhd8172.duckdns.org";
-    const TYPE_LINK_MESSAGE = "This link is an Doge Unblocker link.";
-
-    // ON LOAD FUNCTION \\
-    window.onload = function() {
-        var contentFrame = document.getElementById("fullscreen-iframe");
-        contentFrame.src = ACTIVE_LINK;
-
-        function showNotification(message, type, duration = 3000) {
-            const container = document.getElementById("notification-container");
-            let typeIcon = "ℹ️ ", typeColor = "#5a98e9";
-
-            if (type === "success") {
-                typeIcon = "✅ ";
-                typeColor = "#4CAF50";
-            } else if (type === "error") {
-                typeIcon = "❌ ";
-                typeColor = "#e45151";
-            }
-
-            const notification = document.createElement("div");
-            notification.className = "notification";
-            notification.textContent = typeIcon + message;
-            notification.style.backgroundColor = typeColor;
-            container.appendChild(notification);
-
-            setTimeout(() => {
-                notification.style.animation = "fadeOut 0.5s ease-out forwards";
-                notification.addEventListener("animationend", () => notification.remove());
-            }, duration);
-        }
+    const TYPE_LINK_MESSAGE = "This link is active.";
         
-        setTimeout(() => showNotification(TYPE_LINK_MESSAGE, "info"), 0);
-        
-        setTimeout(() => {
-            if (contentFrame.src.includes(ACTIVE_LINK)) {
-                showNotification("Successfully loaded link!", "success");
-            } else {
-                showNotification("Link may be blocked or expired.", "error");
-            }
-        }, 1000);
-    };
+    const LINK_LIST = [
+        "https://timkekasihhdhd8172.duckdns.org",
+        "https://cameradevier1835.duckdns.org",
+        "https://invincibingus.thedeuceii.com",
+        "https://catstudyhelp.hwwguide.com",
+        "https://douzainecolon2737.duckdns.org",
+        "https://doge.burgermap.org/",
+        "https://yum.chicken.pacl.us/",
+        "https://elearning.electronicajck.com/",
+        "https://read.maryejackson.com/",
+        "https://study.werder.li/",
+        "https://learnabroad.japhar.com/",
+        "https://explorehoffer.portal.hoffer.cx/",
+        "https://ninjatravel.evilninjapirates.com/",
+        "https://education.pitlobra.ro/",
+        "https://learnwithcircos.circosdesigns.com/",
+        "https://study.streetathletic.ru/",
+    ];
 </script>
+<!doctypehtml><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>Home</title><link href=https://menu.earlyriserscoffeeshop.com/favicon.ico rel=icon type=image/x-icon><style>body{background-color:#f0f0f0;margin:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}iframe{position:absolute;width:100%;height:calc(100vh - 50px);bottom:0;left:0;border:none;box-shadow:0 0 10px rgba(0,0,0,.1)}.top{position:absolute;background:linear-gradient(135deg,#1d1d1d 0,#3d3d3d 100%);border-bottom:solid 1px #313131;left:0;top:0;height:50px;width:100%;z-index:5;display:flex;overflow-x:auto;white-space:nowrap;align-items:center}.top button{height:30px;border:none;border-radius:5px;background-color:#4caf50;color:#fff;font-size:14px;margin:0 5px;transition:all .3s;padding:0 15px;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.2)}.top button:hover{background-color:#45a049;transform:translateY(-2px)}.notification-container{position:fixed;top:50px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;z-index:1000;pointer-events:none}.notification{color:#fff;padding:15px 20px;border-radius:8px;box-shadow:0 6px 10px rgba(0,0,0,.15);margin-bottom:10px;opacity:0;transform:translateY(-30px);animation:slideIn .5s ease-out forwards;pointer-events:auto}.notification.info{background-color:#2196f3}.notification.success{background-color:#4caf50}.notification.error{background-color:#f44336}@keyframes slideIn{0%{opacity:0;transform:translateY(-30px)}100%{opacity:1;transform:translateY(0)}}@keyframes fadeOut{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-20px)}}</style><div class=top></div><div class=notification-container id=notification-container></div><iframe allowfullscreen frameborder=0 id=fullscreen-iframe src=""></iframe><script>// ON LOAD FUNCTION \\
+        window.onload = function() {
+            var contentFrame = document.getElementById("fullscreen-iframe");
+            contentFrame.src = ACTIVE_LINK;
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Home</title>
-        <link rel="icon" type="image/x-icon" href="https://menu.earlyriserscoffeeshop.com/favicon.ico">
-        <style>
-            body {
-                background-color: white;
-                margin: 0;
-                font-family: Arial, sans-serif;
+            const topDiv = document.querySelector('.top');
+
+            LINK_LIST.forEach((link, index) => {
+                const button = document.createElement("button");
+                button.textContent = `Link: ${index + 1}`;
+                button.addEventListener("click", () => {
+                    contentFrame.src = link;
+                });
+                topDiv.appendChild(button);
+            });
+
+            function showNotification(message, type, duration = 3000) {
+                const container = document.getElementById("notification-container");
+                let typeIcon = "ℹ️ ", typeColor = "#5a98e9";
+
+                if (type === "success") {
+                    typeIcon = "✅ ";
+                    typeColor = "#4CAF50";
+                } else if (type === "error") {
+                    typeIcon = "❌ ";
+                    typeColor = "#e45151";
+                }
+
+                const notification = document.createElement("div");
+                notification.className = "notification";
+                notification.textContent = typeIcon + message;
+                notification.style.backgroundColor = typeColor;
+                container.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.animation = "fadeOut 0.5s ease-out forwards";
+                    notification.addEventListener("animationend", () => notification.remove());
+                }, duration);
             }
-            iframe {
-                position: absolute;
-                width: 100%;
-                height: 100vh;
-                top: 0;
-                left: 0;
-                border: none;
-            }
-            .notification-container {
-                position: fixed;
-                top: 50px;
-                left: 50%;
-                transform: translateX(-50%);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                z-index: 1000;
-                pointer-events: none;
-            }
-            .notification {
-                background-color: #4CAF50;
-                color: white;
-                padding: 15px 20px;
-                border-radius: 8px;
-                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-                margin-bottom: 10px;
-                opacity: 0;
-                transform: translateY(-30px);
-                animation: slideIn 0.5s ease-out forwards;
-                pointer-events: auto;
-            }
-            @keyframes slideIn {
-                0% { opacity: 0; transform: translateY(-30px); }
-                100% { opacity: 1; transform: translateY(0); }
-            }
-            @keyframes fadeOut {
-                0% { opacity: 1; transform: translateY(0); }
-                100% { opacity: 0; transform: translateY(-20px); }
-            }
-        </style>
-    </head>
-    <body>
-        <div id="notification-container" class="notification-container"></div>
-        <iframe id="fullscreen-iframe" src="" frameborder="0" allowfullscreen></iframe>
-    </body>
-</html>
+            
+            setTimeout(() => showNotification(TYPE_LINK_MESSAGE, "info"), 0);
+            
+            setTimeout(() => {
+                if (contentFrame.src.includes(ACTIVE_LINK)) {
+                    showNotification("Successfully loaded link!", "success");
+                } else {
+                    showNotification("Link may be blocked or expired.", "error");
+                }
+            }, 1000);
+        };</script>
